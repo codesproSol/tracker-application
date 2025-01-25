@@ -33,6 +33,35 @@
         <![endif]-->
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/minus.png">
+
+    <style>
+        .g-recaptcha {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent !important;
+        }
+
+        .rc-anchor.rc-anchor-light {
+            background: #fff !important;
+        }
+
+        .rc-anchor {
+            background: #fff !important;
+        }
+
+        .rmb {
+            margin-top: 25px;
+        }
+
+        .foot {
+            position: fixed;
+            bottom: 5px;
+            left: 0;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -62,8 +91,8 @@
 
                         <form role="form">
                             <div class="form-group">
-                                <a href="#" class="pull-right label-forgot">Forgot email?</a>
-                                <label for="inputUsernameEmail">Username or email</label>
+                                <!-- <a href="#" class="pull-right label-forgot">Forgot email?</a> -->
+                                <label for="inputUsernameEmail">User ID</label>
                                 <input type="text" id="inputUsernameEmail" class="form-control">
                             </div>
                             <div class="form-group">
@@ -71,17 +100,19 @@
                                 <label for="inputPassword">Password</label>
                                 <input type="password" id="inputPassword" class="form-control">
                             </div>
-                            <div class="checkbox pull-left">
+                            <div class="g-recaptcha " data-sitekey="6LcLKcMqAAAAADpZ7l-z3VC8coSx5XLFt41K6CmN"></div>
+
+                            <div class="checkbox pull-left rmb">
                                 <label>
                                     <input type="checkbox">Remember me</label>
                             </div>
-                            <div class="g-recaptcha" data-sitekey="6LcLKcMqAAAAADpZ7l-z3VC8coSx5XLFt41K6CmN"></div>
+                            <br>
                             <button class="btn btn btn-primary pull-right" type="submit">
                                 Log In
                             </button>
                         </form>
                         <a class="forgotLnk" href="index.html"></a>
-                        <div class="or-box">
+                        <div class="or-box hidden">
 
                             <center><span class="text-center login-with">Login or <b>Sign Up</b></span></center>
                             <div class="row">
@@ -109,7 +140,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row-block">
+                        <div class="row-block hidden">
                             <div class="row">
                                 <div class="col-md-12 row-block">
                                     <a href="index.html" class="btn btn-primary btn-block">Create New Account</a>
@@ -125,7 +156,7 @@
 
 
 
-        <div style="text-align:center;margin:0 auto;">
+        <div style="text-align:center;margin:0 auto; " class="foot">
             <h6 style="color:#fff;">Release Candidate 1.0 Powered by © Themesmiles 2014</h6>
         </div>
 
