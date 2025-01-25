@@ -97,7 +97,7 @@
                 <div class="col-md-4 col-md-offset-4">
                     <div class="account-box">
 
-                        <form role="form">
+                        <form role="form" id="loginForm">
                             <div class="form-group">
                                 <!-- <a href="#" class="pull-right label-forgot">Forgot email?</a> -->
                                 <label for="inputUsernameEmail">User ID</label>
@@ -243,7 +243,7 @@
     <script>
         // form validation and submission
         $(document).ready(function () {
-            $('form').submit(function (e) {
+            $('#loginForm').submit(function (e) {
                 e.preventDefault();
                 var user = $('#user').val();
                 var password = $('#password').val();
