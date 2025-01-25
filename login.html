@@ -63,6 +63,12 @@
             text-align: center;
             width: 100%;
         }
+
+        .uerr_msg,
+        .perr_msg {
+            font-size: 10px;
+            color: rgb(245, 138, 138);
+        }
     </style>
 </head>
 
@@ -96,17 +102,21 @@
                                 <!-- <a href="#" class="pull-right label-forgot">Forgot email?</a> -->
                                 <label for="inputUsernameEmail">User ID</label>
                                 <input type="text" id="user" name="user" class="form-control">
+                                <span class="uerr_msg"></span>
                             </div>
                             <div class="form-group">
                                 <a href="#" class="pull-right label-forgot">Forgot password?</a>
                                 <label for="inputPassword">Password</label>
                                 <input type="password" id="password" name="password" class="form-control">
+                                <span class="perr_msg"></span>
                             </div>
                             <div class="g-recaptcha " data-sitekey="6LcLKcMqAAAAADpZ7l-z3VC8coSx5XLFt41K6CmN"></div>
 
                             <div class="checkbox pull-left rmb">
                                 <label>
-                                    <input type="checkbox">Remember me</label>
+                                    <input type="checkbox"
+                                        style="transform: scale(1.7); accent-color: rgb(43, 0, 255);">Remember
+                                    me</label>
                             </div>
                             <br>
                             <button class="btn btn btn-primary pull-right" type="submit">
@@ -227,6 +237,47 @@
                 }
             });
 
+        });
+    </script>
+
+    <script>
+        // form validation and submission
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var user = $('#user').val();
+                var password = $('#password').val();
+                var recaptcha = grecaptcha.getResponse();
+                if (user == '' || password == '') {
+                    document.querySelector('.uerr_msg').innerHTML = 'Please fill all fields';
+                    document.querySelector('.perr_msg').innerHTML = 'Please fill all fields';
+                    return false;
+                } else {
+                    document.querySelector('.uerr_msg').innerHTML = '';
+                    document.querySelector('.perr_msg').innerHTML = '';
+                }
+                if (recaptcha == '') {
+                    document.querySelector('.uerr_msg').innerHTML = '';
+                    alert('Please verify captcha');
+                    return false;
+                }
+                $.ajax({
+                    url: '/index.html',
+                    type: 'post',
+                    data: {
+                        user: user,
+                        password: password,
+                        recaptcha: recaptcha
+                    },
+                    success: function (response) {
+                        if (response == 'success') {
+                            window.location.href = 'index.php';
+                        } else {
+                            alert(response);
+                        }
+                    }
+                });
+            });
         });
     </script>
 
